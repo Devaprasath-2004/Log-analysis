@@ -5,7 +5,7 @@ This project is a lightweight log monitoring tool that:
 •	Displays logs via a simple Flask web dashboard.
 Perfect for system admins or developers looking for a minimal, portable, and visual log tracking tool.
 
-Project Structure
+    Project Structure
 project/
 ├── log_parser.py            # Parses logs and stores defects in logs.db
 ├── app.py                   # Flask web app to display logs
@@ -14,15 +14,15 @@ project/
     ├── home.html            # Homepage with navigation links
     └── dashboard.html       # Displays defective logs in a styled table
 
-Setup Instructions
+    Setup Instructions
 
-1. Requirements
+    1. Requirements
 •	Python 3.x
 •	Flask
 Install Flask if you haven't:
 pip install flask
 
-2. Step-by-Step Usage
+    2. Step-by-Step Usage
 Step 1: Parse the Logs
 Run the following script to extract and store defective logs:
 python log_parser.py
@@ -35,15 +35,15 @@ Step 2: Launch the Web Dashboard
 python app.py
 Visit http://localhost:5050 in your browser.
  
-Web Interface Routes
+    Web Interface Routes
 Route	Description
 /	Home page
 /auth	View defective authentication logs
 /kernel	View defective kernel logs
 
-How It Works
+    How It Works
 
-1. log_parser.py
+    1. log_parser.py
 •	Scans logs for keywords: error, fail, denied, segfault, invalid, panic
 •	Extracts timestamp and device hostname
 •	Classifies logs into:
@@ -60,20 +60,20 @@ CREATE TABLE defective_logs (
     	log_type TEXT
        )
        
-2. app.py (Flask Server)
+    2. app.py (Flask Server)
 •	Fetches logs by type (auth, kern) from the database.
 •	Renders logs using HTML templates:
 o	home.html – links to view different log types.
 o	dashboard.html – dynamic table displaying log entries.
 
-3. dashboard.html
+    3. dashboard.html
 •	Displays a clean HTML table with:
 o	Timestamp
 o	User name (hostname)
 o	Raw log message
 o	Defect type
 
-Resetting the Database
+    Resetting the Database
 To clear all logs and restart:
 rm logs.db
 python log_parser.py
