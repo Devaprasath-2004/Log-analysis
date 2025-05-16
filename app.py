@@ -1,4 +1,4 @@
-# Import necessary modules
+# Import necessary modules 
 from flask import Flask, render_template
 import sqlite3  # Used for connecting to the local logs.db SQLite database
 
