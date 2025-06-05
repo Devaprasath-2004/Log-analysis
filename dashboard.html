@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding -->
+    <meta charset="UTF-8">
+
+    <!-- Use the page title passed from Flask -->
+    <title>{{ title }}</title>
+
+    <!-- Internal CSS styling for the table and layout -->
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { padding: 10px; border: 1px solid #ddd; text-align: left; }
+        th { background-color: #333; color: white; }
+        a { text-decoration: none; color: #333; }
+    </style>
+</head>
+<body>
+    <!-- Page heading (dynamic) -->
+    <h2>{{ title }}</h2>
+
+    <!-- Link to go back to the homepage -->
+    <a href="/">← Back to Home</a>
+
+    <!-- Log table to display defective log entries -->
+    <table>
+        <thead>
+            <!-- Table header row -->
+            <tr>
+                <th>Timestamp</th>
+                <th>User Name</th>
+                <th>Log</th>
+                <th>Defect</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Loop through log entries passed from Flask and create rows -->
+            {% for row in logs %}
+            <tr>
+                <td>{{ row[0] }}</td> <!-- Timestamp -->
+                <td>{{ row[1] }}</td> <!-- User name (hostname) -->
+                <td>{{ row[2] }}</td> <!-- Full log message -->
+                <td>{{ row[3] }}</td> <!-- Type of defect -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
